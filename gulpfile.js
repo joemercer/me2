@@ -21,12 +21,12 @@ gulp.task('browser-sync', function() {
 });
 
 gulp.task('css', function() {
-  return gulp.src('./src/css/**/*.{css,less}')
+  return gulp.src('./src/styles/**/*.{css,less}')
     .pipe($.plumber())
     .pipe($.less({
-      paths: ['src/css','semantic/dist/*/**.css']
+      paths: ['src/styles','semantic/dist/*/**.css']
     }))
-    .pipe(gulp.dest('dist/css'));
+    .pipe(gulp.dest('dist/styles'));
 });
 
 
@@ -64,28 +64,16 @@ gulp.task('images', function() {
     .pipe(gulp.dest('./dist/images'))
 });
 
-// gulp.task('templates', function() {
-//   return gulp.src('src/*.jade')
-//     .pipe($.plumber())
-//     .pipe($.jade({
-//       pretty: true
-//     }))
-//     .pipe( gulp.dest('dist/') )
-// });
 var data = {
   firstName: 'Kaanon'
 };
 var options = {
-    // ignorePartials: true, //ignores the unknown footer2 partial in the handlebars template, defaults to false 
-    // partials : {
-    //     footer : '<footer>the end</footer>'
-    // },
-    // batch : ['./src/partials'],
-    // helpers : {
-    //     capitals : function(str){
-    //         return str.toUpperCase();
-    //     }
-    // }
+  batch: ['./src/partials'],
+  helpers : {
+    capitals : function(str){
+      return str.toUpperCase();
+    }
+  }
 };
 gulp.task('templates', function() {
   return gulp.src('src/*.hbs')
