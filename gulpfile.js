@@ -8,6 +8,8 @@ var gulp        = require('gulp'),
     del         = require('del'),
     argv        = require('yargs').argv;
 
+$.handlebars = require('gulp-compile-handlebars');
+
 gulp.task('browser-sync', function() {
   browserSync({
     open: !!argv.open,
@@ -22,7 +24,7 @@ gulp.task('css', function() {
   return gulp.src('./src/css/**/*.{css,less}')
     .pipe($.plumber())
     .pipe($.less({
-      paths: 'src/css'
+      paths: ['src/css','semantic/dist/*/**.css']
     }))
     .pipe(gulp.dest('dist/css'));
 });
@@ -45,8 +47,8 @@ gulp.task('js', function() {
         console.log(error.stack);
         this.emit('end')
     })
-  .pipe( $.rename('app.js'))
-  .pipe( gulp.dest('dist/scripts/'));
+  .pipe($.rename('app.js'))
+  .pipe(gulp.dest('dist/scripts/'));
 });
 
 
@@ -60,15 +62,37 @@ gulp.task('images', function() {
       progressive: true
     }))
     .pipe(gulp.dest('./dist/images'))
-})
+});
 
+// gulp.task('templates', function() {
+//   return gulp.src('src/*.jade')
+//     .pipe($.plumber())
+//     .pipe($.jade({
+//       pretty: true
+//     }))
+//     .pipe( gulp.dest('dist/') )
+// });
+var data = {
+  firstName: 'Kaanon'
+};
+var options = {
+    // ignorePartials: true, //ignores the unknown footer2 partial in the handlebars template, defaults to false 
+    // partials : {
+    //     footer : '<footer>the end</footer>'
+    // },
+    // batch : ['./src/partials'],
+    // helpers : {
+    //     capitals : function(str){
+    //         return str.toUpperCase();
+    //     }
+    // }
+};
 gulp.task('templates', function() {
-  return gulp.src('src/*.jade')
+  return gulp.src('src/*.hbs')
     .pipe($.plumber())
-    .pipe($.jade({
-      pretty: true
-    }))
-    .pipe( gulp.dest('dist/') )
+    .pipe($.handlebars(data, options))
+    .pipe($.rename('index.html'))
+    .pipe(gulp.dest('dist/') )
 });
 
 
@@ -79,7 +103,7 @@ gulp.task('serve', ['build', 'browser-sync'], function () {
   gulp.watch('src/css/**/*.{css,less}',['css', reload]);
   gulp.watch('src/scripts/**/*.js',['js', reload]);
   gulp.watch('src/images/**/*',['images', reload]);
-  gulp.watch('src/*.jade',['templates', reload]);
+  gulp.watch('src/*.hbs',['templates', reload]);
 });
 
 gulp.task('default', ['serve']);
