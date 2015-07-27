@@ -2,12 +2,71 @@
 
 body {
   height: 100%;
-  padding: 80px 60px 120px 180px;
+  border: 5px solid black;
 }
 
 .container {
-  border: 5px solid black;
-  height: 100%;
-  background-color: white;
-  padding: 80px;
+
+  .icon {
+  	height: 250px;
+  	width: 100%;
+  	margin-top: 100px;
+  	margin-bottom: 20px;
+  }
+}
+
+
+// we should have an article id <article>
+// that defines basic h1, p, etc styles
+
+// then we can also have a .post class
+// that defines things like .post-title, and post specific elements
+
+
+
+.post {
+
+	h1 {
+		font-family: 'Ubuntu','Open Sans','Helvetica',sans-serif;
+	  font-weight: 800;
+	  font-size: 28px;
+	  line-height: 1.5;
+
+	  color: black;
+
+    padding-left: 10px;
+	  padding-right: 10px;
+	  margin: 0 auto;
+	  margin-top: 20px;
+	  margin-bottom: 20px;
+	  max-width: 600px;
+	}
+
+	p {
+		font-family: 'Open Sans','Helvetica',sans-serif;
+		font-weight: 400;
+		font-size: 18px;
+	  line-height: 1.5;
+
+	  -webkit-font-smoothing: antialiased;
+
+	  color: #4D4D4D;
+
+    padding-left: 10px;
+	  padding-right: 10px;
+	  margin: 0 auto;
+	  margin-top: 20px;
+	  margin-bottom: 20px;
+	  max-width: 600px;
+	}
+
+	b {
+		// font-family: 'Lato';
+	}
+
+	a {
+		// font-family: 'Lato';
+		color: black;
+	}
+
 }

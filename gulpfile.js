@@ -88,7 +88,7 @@ gulp.task('templates', function() {
 gulp.task('build', ['css', 'js', 'templates', 'images']);
 
 gulp.task('serve', ['build', 'browser-sync'], function () {
-  gulp.watch('src/css/**/*.{css,less}',['css', reload]);
+  gulp.watch('src/styles/**/*.{css,less}',['css', reload]);
   gulp.watch('src/scripts/**/*.js',['js', reload]);
   gulp.watch('src/images/**/*',['images', reload]);
   gulp.watch('src/*.hbs',['templates', reload]);
