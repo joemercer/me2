@@ -54,7 +54,8 @@ body {
 
 
 @black: black;
-@grey: #4D4D4D;
+@darkgrey: #4D4D4D;
+@lightgrey: #e1e1e1;
 
 @padding: 10px + @border-width;
 @margin: 20px;
@@ -85,16 +86,31 @@ article {
 		font-size: 18px;
 	  line-height: 1.5;
 
-	  color: @grey;
+	  color: @darkgrey;
 
 	  margin-top: @margin;
 		margin-bottom: @margin;
 		padding-left: @padding;
 		padding-right: @padding;
 	}
+
+	a {
+		color: inherit;
+  	border-bottom: 2px solid @lightgrey;
+  	text-decoration: none;
+
+  	&:hover {
+  		color: inherit;
+  		border-bottom-color: pink;
+  	}
+	}
 }
 
 
 .post {
-
+	.post-title {
+		&:hover {
+			color: orange;
+		}
+	}
 }
