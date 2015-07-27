@@ -1,9 +1,39 @@
 @import "semantic.css";
 
 body {
-  height: 100%;
-  border: 5px solid black;
+  // height: 100%;
+  // border: 5px solid black;
 }
+
+@border-width: 5px;
+
+.border {
+	background: black;
+	position: fixed;
+}
+.border.left, .border.right {
+	top: 0; bottom: 0;
+	width: @border-width;
+}
+.border.left {
+	left: 0;
+}
+.border.right {
+	right: 0;
+}
+.border.top, .border.bottom {
+	left: 0; right: 0;
+	height: @border-width;
+}
+.border.top {
+	top: 0;
+}
+.border.bottom {
+	bottom: 0;
+}
+
+
+
 
 .container {
 
@@ -23,8 +53,17 @@ body {
 // that defines things like .post-title, and post specific elements
 
 
+@black: black;
+@grey: #4D4D4D;
 
-.post {
+@padding: 10px + @border-width;
+@margin: 20px;
+
+article {
+	max-width: 600px;
+	margin: 0 auto;
+
+	-webkit-font-smoothing: antialiased;
 
 	h1 {
 		font-family: 'Ubuntu','Open Sans','Helvetica',sans-serif;
@@ -32,14 +71,12 @@ body {
 	  font-size: 28px;
 	  line-height: 1.5;
 
-	  color: black;
+	  color: @black;
 
-    padding-left: 10px;
-	  padding-right: 10px;
-	  margin: 0 auto;
-	  margin-top: 20px;
-	  margin-bottom: 20px;
-	  max-width: 600px;
+	  margin-top: @margin;
+		margin-bottom: @margin;
+		padding-left: @padding;
+		padding-right: @padding;
 	}
 
 	p {
@@ -48,25 +85,16 @@ body {
 		font-size: 18px;
 	  line-height: 1.5;
 
-	  -webkit-font-smoothing: antialiased;
+	  color: @grey;
 
-	  color: #4D4D4D;
-
-    padding-left: 10px;
-	  padding-right: 10px;
-	  margin: 0 auto;
-	  margin-top: 20px;
-	  margin-bottom: 20px;
-	  max-width: 600px;
+	  margin-top: @margin;
+		margin-bottom: @margin;
+		padding-left: @padding;
+		padding-right: @padding;
 	}
+}
 
-	b {
-		// font-family: 'Lato';
-	}
 
-	a {
-		// font-family: 'Lato';
-		color: black;
-	}
+.post {
 
 }
