@@ -21,6 +21,13 @@ $(function(){
 		prevI = i;
 	}, 2000);
 
+	var $borders = $('.border');
+	window.setInterval(function(){
+		var i = (prevI) % colors.length;
+		$borders.removeClass(sColors);
+		$borders.addClass(colors[i]);
+	}, 2000);
+
 
 
 	var $colorful = $('.colorful');

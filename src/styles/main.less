@@ -177,6 +177,19 @@ b.colorful {
   } .-;
 }
 
+.border {
+	//.transition(fill .2s cubic-bezier(0.165,0.630,0.140,0.820));
+	.transition(background-color 2s ease-in-out);
+
+	.-(@i: length(@colors)) when (@i > 0) {
+    @name: extract(@colors, @i);
+    &.@{name} {
+    	background-color: @@name;
+    }
+    .-((@i - 1));
+  } .-;
+}
+
 
 
 .container {
