@@ -50,10 +50,10 @@ body {
 // then we can also have a .post class
 // that defines things like .post-title, and post specific elements
 
-
-@black: black;
+@black: #000;
 @darkgrey: #4D4D4D;
 @lightgrey: #e1e1e1;
+@white: #FFF;
 
 @padding: 10px + @border-width;
 @margin: 20px;
@@ -116,37 +116,66 @@ article {
 
 
 
-a.colorful {
+@yellow: #f2ea00;
+@amber: #ebce13;
+@orange: #f0aa14;
+@sunset: #f08630;
+@red: #f07a60;
+@fuchsia: #ee78f0;
+@purple: #bd90f0;
+@indigo: #9092f0;
+@blue: #7fbadc;
+@aqua: #90f0e3;
+@green: #91d271;
+@lime: #c5f060;
+
+@colors: yellow, amber, orange, sunset, red, fuchsia, purple, indigo, blue, aqua, green, lime;
+
+.colorful {
 	-webkit-backface-visibility: hidden;
 	backface-visibility: hidden;
+}
 
+a.colorful {
 	.transition(border-color .2s cubic-bezier(0.165,0.630,0.140,0.820));
 
-	&:hover {
-		border-color: red;
-	}
+  .-(@i: length(@colors)) when (@i > 0) {
+    @name: extract(@colors, @i);
+    &.@{name} {
+    	&:hover {
+    		border-color: @@name;
+    	}
+    }
+    .-((@i - 1));
+  } .-;
 }
 
 b.colorful {
-	-webkit-backface-visibility: hidden;
-	backface-visibility: hidden;
-
 	.transition(color .2s cubic-bezier(0.165,0.630,0.140,0.820));
 
-	&:hover {
-		color: pink;
-	}
+  .-(@i: length(@colors)) when (@i > 0) {
+    @name: extract(@colors, @i);
+    &.@{name} {
+    	&:hover {
+    		color: @@name;
+    	}
+    }
+    .-((@i - 1));
+  } .-;
 }
 
-.icon.colorful g {
-	-webkit-backface-visibility: hidden;
-	backface-visibility: hidden;
-
+.icon g.colorful {
 	.transition(fill .2s cubic-bezier(0.165,0.630,0.140,0.820));
 
-	&:hover {
-		fill: green;
-	}
+	.-(@i: length(@colors)) when (@i > 0) {
+    @name: extract(@colors, @i);
+    &.@{name} {
+    	&:hover {
+    		fill: @@name;
+    	}
+    }
+    .-((@i - 1));
+  } .-;
 }
 
 
