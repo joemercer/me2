@@ -1,4 +1,13 @@
-@import "semantic.css";
+// @import "semantic.css";
+
+// Bootstrap path
+@bootstrap: "./../../node_modules/bootstrap/less/";
+ 
+// Bootstrap mixins
+@import "@{bootstrap}/mixins.less";
+
+// Normalize
+@import "@{bootstrap}/normalize.less";
 
 body {
   // height: 100%;
@@ -33,17 +42,6 @@ body {
 }
 
 
-
-
-.container {
-
-  .icon {
-  	height: 250px;
-  	width: 100%;
-  	margin-top: 100px;
-  	margin-bottom: 20px;
-  }
-}
 
 
 // we should have an article id <article>
@@ -99,12 +97,13 @@ article {
   	border-bottom: 2px solid @lightgrey;
   	text-decoration: none;
 
-  	&:hover {
-  		color: inherit;
-  		border-bottom-color: pink;
-  	}
+  	// &:hover {
+  	// 	color: inherit;
+  	// 	// border-color: red;
+  	// }
 	}
 }
+
 
 
 .post {
@@ -113,4 +112,52 @@ article {
 			color: orange;
 		}
 	}
+}
+
+
+
+a.colorful {
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+
+	.transition(border-color .2s cubic-bezier(0.165,0.630,0.140,0.820));
+
+	&:hover {
+		border-color: red;
+	}
+}
+
+b.colorful {
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+
+	.transition(color .2s cubic-bezier(0.165,0.630,0.140,0.820));
+
+	&:hover {
+		color: pink;
+	}
+}
+
+.icon.colorful g {
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+
+	.transition(fill .2s cubic-bezier(0.165,0.630,0.140,0.820));
+
+	&:hover {
+		fill: green;
+	}
+}
+
+
+
+.container {
+
+  .icon {
+  	height: 250px;
+  	width: 100%;
+  	margin-top: 100px;
+  	margin-bottom: 20px;
+  }
+
 }

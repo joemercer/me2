@@ -65,7 +65,7 @@ gulp.task('images', function() {
 });
 
 var data = {
-  firstName: 'Kaanon'
+  firstName: 'Kaanon' // !!!
 };
 var options = {
   batch: ['./src/partials'],
@@ -91,7 +91,7 @@ gulp.task('serve', ['build', 'browser-sync'], function () {
   gulp.watch('src/styles/**/*.{css,less}',['css', reload]);
   gulp.watch('src/scripts/**/*.js',['js', reload]);
   gulp.watch('src/images/**/*',['images', reload]);
-  gulp.watch('src/*.hbs',['templates', reload]);
+  gulp.watch(['src/*.hbs','src/partials/**/*.hbs'],['templates', reload]);
 });
 
 gulp.task('default', ['serve']);
