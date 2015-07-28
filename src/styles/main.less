@@ -17,7 +17,7 @@ body {
 @border-width: 5px;
 
 .border {
-	background: black;
+	background: @black;
 	position: fixed;
 }
 .border.left, .border.right {
@@ -165,14 +165,13 @@ b.colorful {
 }
 
 .icon g.colorful {
-	.transition(fill .2s cubic-bezier(0.165,0.630,0.140,0.820));
+	//.transition(fill .2s cubic-bezier(0.165,0.630,0.140,0.820));
+	.transition(fill 2s ease-in-out);
 
 	.-(@i: length(@colors)) when (@i > 0) {
     @name: extract(@colors, @i);
     &.@{name} {
-    	&:hover {
-    		fill: @@name;
-    	}
+    	fill: @@name;
     }
     .-((@i - 1));
   } .-;
