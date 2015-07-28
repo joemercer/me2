@@ -47,7 +47,7 @@ gulp.task('js', function() {
         console.log(error.stack);
         this.emit('end')
     })
-  .pipe($.rename('app.js'))
+  .pipe($.rename('main.js'))
   .pipe(gulp.dest('dist/scripts/'));
 });
 
@@ -69,7 +69,7 @@ var data = {
 };
 var options = {
   batch: ['./src/partials'],
-  helpers : {
+  helpers : { // !!!
     capitals : function(str){
       return str.toUpperCase();
     }
