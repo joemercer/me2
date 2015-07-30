@@ -17,16 +17,46 @@ $(function(){
 	var $icon = $('.icon g');
 	var $borders = $('.border');
 	var prevI = 7;
-	$icon.attr('class', 'colorful ' + colors[prevI]);
-	$borders.removeClass(sColors);
-	$borders.addClass(colors[prevI]);
-	window.setInterval(function(){
-		var i = (prevI + 1) % colors.length;
-		$icon.attr('class', 'colorful ' + colors[i]);
+
+	$(window).mousedown(function(){
+		$icon.attr('class', colors[prevI]);
 		$borders.removeClass(sColors);
-		$borders.addClass(colors[i]);
-		prevI = i;
-	}, 2000);
+		$borders.addClass(colors[prevI]);
+		var intervalId = window.setInterval(function(){
+			var i = (prevI + 1) % colors.length;
+			$icon.attr('class', colors[i]);
+			$borders.removeClass(sColors);
+			$borders.addClass(colors[i]);
+			prevI = i;
+		}, 2000);
+
+		$(window).mouseup(function(){
+			window.clearInterval(intervalId);
+			$icon.attr('class', '');
+			$borders.removeClass(sColors);
+			prevI = prevI + 1;
+		});
+	});
+
+	$icon.mouseenter(function(){
+		$icon.attr('class', colors[prevI]);
+		$borders.removeClass(sColors);
+		$borders.addClass(colors[prevI]);
+		var intervalId = window.setInterval(function(){
+			var i = (prevI + 1) % colors.length;
+			$icon.attr('class', colors[i]);
+			$borders.removeClass(sColors);
+			$borders.addClass(colors[i]);
+			prevI = i;
+		}, 2000);
+
+		$icon.mouseleave(function(){
+			window.clearInterval(intervalId);
+			$icon.attr('class', '');
+			$borders.removeClass(sColors);
+			prevI = prevI + 1;
+		});
+	});
 
 
 
