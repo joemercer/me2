@@ -12,23 +12,25 @@ $(function(){
 
 
 
+	// ## color changing icon and borders
+
 	var $icon = $('.icon g');
+	var $borders = $('.border');
 	var prevI = 7;
 	$icon.attr('class', 'colorful ' + colors[prevI]);
+	$borders.removeClass(sColors);
+	$borders.addClass(colors[prevI]);
 	window.setInterval(function(){
 		var i = (prevI + 1) % colors.length;
 		$icon.attr('class', 'colorful ' + colors[i]);
+		$borders.removeClass(sColors);
+		$borders.addClass(colors[i]);
 		prevI = i;
 	}, 2000);
 
-	var $borders = $('.border');
-	window.setInterval(function(){
-		var i = (prevI) % colors.length;
-		$borders.removeClass(sColors);
-		$borders.addClass(colors[i]);
-	}, 2000);
 
 
+	// ## colorful elements
 
 	var $colorful = $('.colorful');
 
