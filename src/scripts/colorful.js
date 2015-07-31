@@ -12,32 +12,24 @@ $(function(){
 
 
 
-	// ## color changing icon and borders
+	// ## colorful elements
+	// - icon treated differently
 
-	var $icon = $('.icon g');
+	var $colorful = $('.colorful');
 	var $borders = $('.border');
+	var $icon = $('.icon g');
+
+	// seed each element with a starting color
+
+	// $icon.attr('class', colors[Math.floor(Math.random()*colors.length)]);
 	var prevI = 7;
 
-	$(window).mousedown(function(){
-		$icon.attr('class', colors[prevI]);
-		$borders.removeClass(sColors);
-		$borders.addClass(colors[prevI]);
-		var intervalId = window.setInterval(function(){
-			var i = (prevI + 1) % colors.length;
-			$icon.attr('class', colors[i]);
-			$borders.removeClass(sColors);
-			$borders.addClass(colors[i]);
-			prevI = i;
-		}, 2000);
-
-		$(window).mouseup(function(){
-			window.clearInterval(intervalId);
-			$icon.attr('class', '');
-			$borders.removeClass(sColors);
-			prevI = prevI + 1;
-		});
+	$colorful.each(function(i,target){
+		var newColor = colors[Math.floor(Math.random()*colors.length)];
+		$(target).addClass(newColor);
 	});
 
+	// kaleidoscope when mouse enters icon
 	$icon.mouseenter(function(){
 		$icon.attr('class', colors[prevI]);
 		$borders.removeClass(sColors);
@@ -52,22 +44,8 @@ $(function(){
 
 		$icon.mouseleave(function(){
 			window.clearInterval(intervalId);
-			$icon.attr('class', '');
 			$borders.removeClass(sColors);
-			prevI = prevI + 1;
 		});
-	});
-
-
-
-	// ## colorful elements
-
-	var $colorful = $('.colorful');
-
-	// seed each element with a starting color
-	$colorful.each(function(i,target){
-		var newColor = colors[Math.floor(Math.random()*colors.length)];
-		$(target).addClass(newColor);
 	});
 
 	// change the color when the mouse leaves the element

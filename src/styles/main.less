@@ -17,7 +17,7 @@ body {
 @border-width: 5px;
 
 .border {
-	background: @black;
+	background: @white;
 	position: fixed;
 }
 .border.left, .border.right {
@@ -70,7 +70,7 @@ article {
 	  font-size: 28px;
 	  line-height: 1.5;
 
-	  color: @black;
+	  color: @darkgrey;
 
 	  margin-top: @margin;
 		margin-bottom: @margin;
@@ -161,9 +161,7 @@ b.colorful {
   .-(@i: length(@colors)) when (@i > 0) {
     @name: extract(@colors, @i);
     &.@{name} {
-    	&:hover {
-    		color: @@name;
-    	}
+    	color: @@name;
     }
     .-((@i - 1));
   } .-;
