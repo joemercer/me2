@@ -188,3 +188,70 @@ b.colorful {
   }
 
 }
+
+
+
+
+.map-container {
+	position: relative;
+}
+
+.map g {
+	fill: @lightgrey;
+}
+
+.dot {
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  border-radius: 17px;
+}
+
+.dot.colorful {
+	.transition(background-color .2s cubic-bezier(0.165,0.630,0.140,0.820));
+
+  .-(@i: length(@colors)) when (@i > 0) {
+    @name: extract(@colors, @i);
+    &.@{name} {
+    	background-color: @@name;
+    }
+    .-((@i - 1));
+  } .-;
+}
+
+.seattle {
+	top: 40.9%;
+  left: 23.5%;
+}
+
+.waterloo {
+	top: 42.9%;
+  left: 67.1%;
+}
+
+.austin {
+	top: 65.8%;
+  left: 50.7%;
+}
+
+.sf {
+	top: 53.5%;
+  left: 20.3%;
+}
+
+.nyc {
+	top: 48.5%;
+  left: 78.6%;
+}
+
+.hk {
+	top: 80.5%;
+  left: 5.0%;
+}
+
+
+
+
+
+
+
