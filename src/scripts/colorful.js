@@ -21,8 +21,9 @@ $(function(){
 
 	// seed each element with a starting color
 
-	// $icon.attr('class', colors[Math.floor(Math.random()*colors.length)]);
-	var prevI = 7;
+	var prevI = Math.floor(Math.random()*colors.length);
+	$icon.attr('class', colors[prevI]);
+	prevI = prevI + 1;
 
 	$colorful.each(function(i,target){
 		var newColor = colors[Math.floor(Math.random()*colors.length)];
