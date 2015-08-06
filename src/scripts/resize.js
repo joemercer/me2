@@ -10,7 +10,7 @@ $(function(){
 	var $window = $(window);
 	var $icon = $('.icon-container');
 
-	$window.scroll(function(e){
+	var resize = function() {
 		var top = $window.scrollTop();
 
 		if (top <= 100) {
@@ -29,6 +29,12 @@ $(function(){
 		if (top >= 275) {
 			$icon.height(75);
 		}
+	};
+
+	resize();
+
+	$window.scroll(function(e){
+		resize();
 	});
 
 });
