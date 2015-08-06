@@ -17,6 +17,7 @@ body {
 .border {
 	background: @white;
 	position: fixed;
+	z-index: 99;
 }
 .border.left, .border.right {
 	top: 0; bottom: 0;
@@ -178,20 +179,30 @@ b.colorful {
 
 
 
+
+
+.icon-container {
+	height: 250px;
+	width: 100%;
+	margin-top: 100px;
+	margin-bottom: 20px;
+
+	position: fixed;
+	top: 0px;
+	z-index: 50;
+
+	background: rgba(255,255,255,0.9);
+
+}
+
+.icon {
+	height: 100%;
+	width: 100%;
+	z-index: 51;
+}
+
 .container {
-
-	.icon-container {
-		height: 250px;
-  	width: 100%;
-  	margin-top: 100px;
-  	margin-bottom: 20px;
-	}
-
-  .icon {
-  	height: 100%;
-  	width: 100%;
-  }
-
+	margin-top: 370px;
 }
 
 
@@ -199,10 +210,12 @@ b.colorful {
 
 .map-container {
 	position: relative;
+	z-index: 50;
 }
 
 .map g {
 	fill: @lightgrey;
+	z-index: 51;
 }
 
 .dot {
@@ -210,6 +223,7 @@ b.colorful {
   height: 30px;
   width: 30px;
   border-radius: 17px;
+  z-index: 52;
 }
 
 .dot.colorful {

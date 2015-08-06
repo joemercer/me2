@@ -4,3 +4,5 @@ var example = require("./example");
 example.welcome();
 
 var colorful = require("./colorful");
+
+var resize = require("./resize");
