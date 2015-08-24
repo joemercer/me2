@@ -12,6 +12,8 @@ $(function(){
 
 
 
+	var $window = $(window);
+
 	// ## colorful elements
 	// - icon treated differently
 
@@ -19,16 +21,12 @@ $(function(){
 	var $borders = $('.border');
 	var $icon = $('.icon g');
 
-	// seed each element with a starting color
 
+	// seed icon with a starting color
 	var prevI = Math.floor(Math.random()*colors.length);
 	$icon.attr('class', colors[prevI]);
 	prevI = prevI + 1;
 
-	$colorful.each(function(i,target){
-		var newColor = colors[Math.floor(Math.random()*colors.length)];
-		$(target).addClass(newColor);
-	});
 
 	// kaleidoscope when mouse enters icon
 	$icon.mouseenter(function(){
@@ -49,12 +47,46 @@ $(function(){
 		});
 	});
 
-	// change the color when the mouse leaves the element
-	$colorful.mouseleave(function(e){
-		var $target = $(e.target).closest('.colorful');
-		var newColor = colors[Math.floor(Math.random()*colors.length)];
-		$target.removeClass(sColors);
-		$target.addClass(newColor);
-	});
+
+	// if is mobile
+	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+		$('body').addClass('mobile');
+
+		$window.on('touchstart', function(e){
+			$colorful.each(function(index, el){
+				var $target = $(el);
+				var newColor = colors[Math.floor(Math.random()*colors.length)];
+				// $target.removeClass(sColors);
+				$target.addClass(newColor);
+			});
+			// $imgs.addClass('hover-img-activated');
+		});
+
+		$window.on('touchend', function(e){
+			$colorful.each(function(index, el){
+				var $target = $(el);
+				var newColor = colors[Math.floor(Math.random()*colors.length)];
+				$target.removeClass(sColors);
+				// $target.addClass(newColor);
+			});
+			// $imgs.removeClass('hover-img-activated');
+		});
+	}
+	else {
+		// seed each element with a starting color
+		$colorful.each(function(i,target){
+			var newColor = colors[Math.floor(Math.random()*colors.length)];
+			$(target).addClass(newColor);
+		});
+
+		// change the color when the mouse leaves the element
+		$colorful.mouseleave(function(e){
+			var $target = $(e.target).closest('.colorful');
+			var newColor = colors[Math.floor(Math.random()*colors.length)];
+			$target.removeClass(sColors);
+			$target.addClass(newColor);
+		});
+	}
+
 
 });
