@@ -191,9 +191,9 @@ a.colorful {
   .-(@i: length(@colors)) when (@i > 0) {
     @name: extract(@colors, @i);
     &.@{name} {
+    	border-color: @@name;
     	&:hover {
     		color: @@name;
-    		border-color: @@name;
     	}
     }
     .-((@i - 1));
