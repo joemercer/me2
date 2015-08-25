@@ -172,17 +172,33 @@ article {
 }
 
 a.colorful {
-	.transition(border-color .2s cubic-bezier(0.165,0.630,0.140,0.820));
+	.transition(color .2s cubic-bezier(0.165,0.630,0.140,0.820), border-color .2s cubic-bezier(0.165,0.630,0.140,0.820););
 
   .-(@i: length(@colors)) when (@i > 0) {
     @name: extract(@colors, @i);
     &.@{name} {
     	&:hover {
+    		color: @@name;
     		border-color: @@name;
     	}
     }
     .-((@i - 1));
   } .-;
+}
+
+.mobile {
+	a.colorful {
+		.transition(color .2s cubic-bezier(0.165,0.630,0.140,0.820), border-color .2s cubic-bezier(0.165,0.630,0.140,0.820););
+
+	  .-(@i: length(@colors)) when (@i > 0) {
+	    @name: extract(@colors, @i);
+	    &.@{name} {
+    		color: @@name;
+    		border-color: @@name;
+	    }
+	    .-((@i - 1));
+	  } .-;
+	}
 }
 
 b.colorful {

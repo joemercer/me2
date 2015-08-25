@@ -25,7 +25,7 @@ $(function(){
 	// seed icon with a starting color
 	var prevI = Math.floor(Math.random()*colors.length);
 	$icon.attr('class', colors[prevI]);
-	prevI = prevI + 1;
+	prevI = (prevI + 1) % colors.length;
 
 
 	// kaleidoscope when mouse enters icon
@@ -56,10 +56,8 @@ $(function(){
 			$colorful.each(function(index, el){
 				var $target = $(el);
 				var newColor = colors[Math.floor(Math.random()*colors.length)];
-				// $target.removeClass(sColors);
 				$target.addClass(newColor);
 			});
-			// $imgs.addClass('hover-img-activated');
 		});
 
 		$window.on('touchend', function(e){
@@ -67,9 +65,9 @@ $(function(){
 				var $target = $(el);
 				var newColor = colors[Math.floor(Math.random()*colors.length)];
 				$target.removeClass(sColors);
-				// $target.addClass(newColor);
 			});
-			// $imgs.removeClass('hover-img-activated');
+			$icon.attr('class', colors[prevI]);
+			prevI = (prevI + 1) % colors.length;
 		});
 	}
 	else {
@@ -87,6 +85,5 @@ $(function(){
 			$target.addClass(newColor);
 		});
 	}
-
 
 });
