@@ -200,6 +200,21 @@ a.colorful {
   } .-;
 }
 
+h1 a.colorful {
+	.transition(color 2s ease-in-out);
+
+  .-(@i: length(@colors)) when (@i > 0) {
+    @name: extract(@colors, @i);
+    &.@{name} {
+    	border: none;
+    	&:hover {
+    		color: @@name;
+    	}
+    }
+    .-((@i - 1));
+  } .-;
+}
+
 .mobile {
 	a.colorful {
 		.transition(color .2s cubic-bezier(0.165,0.630,0.140,0.820), border-color .2s cubic-bezier(0.165,0.630,0.140,0.820););
