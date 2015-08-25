@@ -9,7 +9,12 @@
 // Normalize
 @import "@{bootstrap}/normalize.less";
 
+html {
+	height: 100%;
+}
+
 body {
+	height: 100%;
 }
 
 @border-width: 5px;
@@ -53,6 +58,15 @@ header {
 	// z-index: 50;
 
 	background: rgba(255,255,255,0.9);
+}
+
+.mobile {
+	header {
+		height: 50%;
+		width: 100%;
+		margin-top: 100px;
+		margin-bottom: 100px;
+	}
 }
 
 .icon {
