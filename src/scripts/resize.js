@@ -31,10 +31,10 @@ $(function(){
 		}
 	};
 
-	// resize();
+	resize();
 
 	$window.scroll(function(e){
-		// resize();
+		resize();
 	});
 
 });

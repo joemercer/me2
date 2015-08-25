@@ -144,6 +144,10 @@ article {
 		padding-right: @padding;
 	}
 
+	h1 a {
+		border: none;
+	}
+
 	a {
 		color: inherit;
   	border-bottom: 2px solid @lightgrey;
@@ -185,13 +189,12 @@ article {
 	backface-visibility: hidden;
 }
 
-a.colorful {
-	.transition(color .2s cubic-bezier(0.165,0.630,0.140,0.820), border-color .2s cubic-bezier(0.165,0.630,0.140,0.820););
+h1 a.colorful {
+	.transition(color 2s ease-in-out);
 
   .-(@i: length(@colors)) when (@i > 0) {
     @name: extract(@colors, @i);
     &.@{name} {
-    	border-color: @@name;
     	&:hover {
     		color: @@name;
     	}
@@ -200,13 +203,13 @@ a.colorful {
   } .-;
 }
 
-h1 a.colorful {
-	.transition(color 2s ease-in-out);
+a.colorful {
+	.transition(color .2s cubic-bezier(0.165,0.630,0.140,0.820), border-color .2s cubic-bezier(0.165,0.630,0.140,0.820););
 
   .-(@i: length(@colors)) when (@i > 0) {
     @name: extract(@colors, @i);
     &.@{name} {
-    	border: none;
+    	border-color: @@name;
     	&:hover {
     		color: @@name;
     	}
