@@ -154,24 +154,6 @@ article {
 	  text-align: center;
 	}
 
-	h1, h2 {
-		a {
-			border: none;
-
-			.transition(color 2s ease-in-out);
-
-		  .-(@i: length(@colors)) when (@i > 0) {
-		    @name: extract(@colors, @i);
-		    &.@{name} {
-		    	&:hover {
-		    		color: @@name;
-		    	}
-		    }
-		    .-((@i - 1));
-		  } .-;
-		}
-	}
-
 	p {
 		font-family: 'Open Sans','Helvetica',sans-serif;
 		font-weight: 400;
@@ -341,6 +323,24 @@ a.colorful {
 	    &.@{name} {
     		color: @@name;
     		border-color: @@name;
+	    }
+	    .-((@i - 1));
+	  } .-;
+	}
+}
+
+h1, h2, h3 {
+	a.colorful {
+		border: none;
+
+		.transition(color 2s ease-in-out);
+
+	  .-(@i: length(@colors)) when (@i > 0) {
+	    @name: extract(@colors, @i);
+	    &.@{name} {
+	    	&:hover {
+	    		color: @@name;
+	    	}
 	    }
 	    .-((@i - 1));
 	  } .-;
