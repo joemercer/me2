@@ -200,12 +200,35 @@ article {
 }
 
 
+
 .date-img {
 	margin-top: 50px;
-	
+
+	.date {
+    display: inline-block;
+    float: left;
+	}
+	.underline {
+		overflow: hidden;
+		border-bottom: 2px solid @lightgrey;
+		padding-top: 10px;
+    margin-right: 30px;
+
+    .transition(border-color .5s cubic-bezier(0.165,0.630,0.140,0.820));
+	}
+
 	&:hover {
 		.date {
 			opacity: 1;
+		}
+		.underline.colorful {
+		  .-(@i: length(@colors)) when (@i > 0) {
+		    @name: extract(@colors, @i);
+		    &.@{name} {
+		    	border-color: @@name;
+		    }
+		    .-((@i - 1));
+		  } .-;
 		}
 		img {
 			filter: none;
@@ -214,7 +237,6 @@ article {
 		}
   }
 }
-
 
 .date {
 	font-family: 'Ubuntu','Open Sans','Helvetica',sans-serif;
