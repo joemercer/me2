@@ -3,6 +3,7 @@
 var example = require("./example");
 example.welcome();
 
-var colorful = require("./colorful");
+require("./colorful");
+require("./scrollTo");
 
-// var resize = require("./resize");
+// require("./resize");
