@@ -294,12 +294,12 @@ img {
 
 @colors: yellow, amber, orange, sunset, red, fuchsia, purple, indigo, blue, aqua, green, lime;
 
-.colorful {
+.colorful, .rainbow {
 	-webkit-backface-visibility: hidden;
 	backface-visibility: hidden;
 }
 
-a.colorful {
+a.rainbow {
 	.transition(color .2s cubic-bezier(0.165,0.630,0.140,0.820), border-color .2s cubic-bezier(0.165,0.630,0.140,0.820););
 
   .-(@i: length(@colors)) when (@i > 0) {
@@ -315,7 +315,7 @@ a.colorful {
 }
 
 .mobile {
-	a.colorful {
+	a.rainbow {
 		.transition(color .2s cubic-bezier(0.165,0.630,0.140,0.820), border-color .2s cubic-bezier(0.165,0.630,0.140,0.820););
 
 	  .-(@i: length(@colors)) when (@i > 0) {
@@ -330,7 +330,7 @@ a.colorful {
 }
 
 h1, h2, h3 {
-	a.colorful {
+	a.rainbow {
 		border: none;
 
 		.transition(color 2s ease-in-out);
@@ -347,9 +347,7 @@ h1, h2, h3 {
 	}
 }
 
-// !!! this no longer changes color
-// move this?
-b {
+b.colorful {
 	.transition(color 2s ease-in-out);
 	color: @white;
 
@@ -363,7 +361,7 @@ b {
 }
 
 .mobile {
-	b {
+	b.colorful {
 		.transition(color .2s cubic-bezier(0.165,0.630,0.140,0.820));
 		color: @darkgrey;
 
@@ -430,7 +428,7 @@ b {
   cursor: pointer;
 }
 
-.dot.colorful {
+.dot.rainbow {
 	.transition(border-color .2s cubic-bezier(0.165,0.630,0.140,0.820), background-color .2s cubic-bezier(0.165,0.630,0.140,0.820););
 
   .-(@i: length(@colors)) when (@i > 0) {

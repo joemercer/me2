@@ -15,9 +15,12 @@ $(function(){
 	var $window = $(window);
 
 	// ## colorful elements
-	// - icon treated differently
+	// - colorful => fixed (random) color
+	// - rainbow => change color effect
+	// - icon treated differently (kaleidascope)
 
 	var $colorful = $('.colorful');
+	var $rainbow = $('.rainbow');
 	var $borders = $('.border');
 	var $icon = $('.icon g');
 
@@ -52,10 +55,8 @@ $(function(){
 	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
 		$('body').addClass('mobile');
 
-		// !!! better selector names
-
 		$window.on('touchstart', function(e){
-			$('p b, ul a.colorful, .dot.colorful').each(function(index, el){
+			$('b.colorful, p a.rainbow, ul a.rainbow, .dot.rainbow').each(function(index, el){
 				var $target = $(el);
 				var newColor = colors[Math.floor(Math.random()*colors.length)];
 				$target.addClass(newColor);
@@ -63,7 +64,7 @@ $(function(){
 		});
 
 		$window.on('touchend', function(e){
-			$('p b, ul a.colorful, .dot.colorful').each(function(index, el){
+			$('b.colorful, p a.rainbow, ul a.rainbow, .dot.rainbow').each(function(index, el){
 				var $target = $(el);
 				$target.removeClass(sColors);
 			});
@@ -72,23 +73,22 @@ $(function(){
 		});
 	}
 	else {
-		// seed bold elements with a starting color
-		// !!! this should be better specified, perhaps as part of article?
-		$('p b').each(function(i,target){
+		// seed colorful elements with a starting color
+		$colorful.each(function(i,target){
 			var newColor = colors[Math.floor(Math.random()*colors.length)];
 			$(target).addClass(newColor);
 		});
 
-		// change colorful element's color
-		$colorful.mouseenter(function(e){
-			var $target = $(e.target).closest('.colorful');
+		// add rainbow element's color
+		$rainbow.mouseenter(function(e){
+			var $target = $(e.target).closest('.rainbow');
 			var newColor = colors[Math.floor(Math.random()*colors.length)];
 			$target.addClass(newColor);
 		});
 
-		// back to grey when mouse leaves colorful element
-		$colorful.mouseleave(function(e){
-			var $target = $(e.target).closest('.colorful');
+		// default rainbow element color
+		$rainbow.mouseleave(function(e){
+			var $target = $(e.target).closest('.rainbow');
 			$target.removeClass(sColors);
 		});
 	}
