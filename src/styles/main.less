@@ -10,6 +10,20 @@
 @import "@{bootstrap}/normalize.less";
 
 html {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: inherit;
+     -moz-box-sizing: inherit;
+          box-sizing: inherit;
+}
+
+html {
 	height: 100%;
 }
 
@@ -107,11 +121,12 @@ footer {
 @lightgrey: #e1e1e1;
 @white: #FFF;
 
+@width: 600px;
 @padding: 10px + @border-width;
 @margin: 20px;
 
 article {
-	max-width: 600px;
+	max-width: @width;
 	margin: 0 auto;
 
 	-webkit-font-smoothing: antialiased;
@@ -153,6 +168,23 @@ article {
   	border-bottom: 2px solid @lightgrey;
   	text-decoration: none;
 	}
+
+	ul {
+	  list-style-type: disc;
+
+	  font-family: 'Ubuntu','Open Sans','Helvetica',sans-serif;
+		font-weight: 400;
+		font-size: 17px;
+	  line-height: 1.5;
+
+	  color: @darkgrey;
+
+	  margin-top: @margin;
+		margin-bottom: @margin;
+		padding-left: @padding + 20px;
+	  padding-right: 0px;
+
+	}
 }
 
 
@@ -165,6 +197,62 @@ article {
 		font-family: 'Ubuntu','Open Sans','Helvetica',sans-serif;
 		font-size: 20px;
 	}
+}
+
+
+.date-img {
+	margin-top: 50px;
+	
+	&:hover {
+		.date {
+			opacity: 1;
+		}
+		img {
+			filter: none;
+  		filter: none;
+  	  -webkit-filter: none;
+		}
+  }
+}
+
+
+.date {
+	font-family: 'Ubuntu','Open Sans','Helvetica',sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+  line-height: 1.5;
+
+	color: @black;
+	opacity: .5;
+
+	.transition(opacity .5s cubic-bezier(0.165,0.630,0.140,0.820));
+
+	padding-left: @padding + 5px;
+  padding-right: @padding + 5px;
+  margin-top: 0px;
+  margin-bottom: 5px;
+}
+
+img {
+	.img-responsive();
+
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding-left: @padding;
+	padding-right: @padding;
+
+	.transition(filter 5s cubic-bezier(0.165,0.630,0.140,0.820), -webkit-filter 5s cubic-bezier(0.165,0.630,0.140,0.820););
+
+	filter: gray;
+  filter: grayscale(1);
+  -webkit-filter: grayscale(1);
+}
+
+@media (max-width: @width) {
+  img {
+    padding-left: 0px;
+		padding-right: 0px;
+  }
 }
 
 
@@ -334,14 +422,6 @@ b.colorful {
 .hk {
 	top: 80.5%;
   left: 5.0%;
-}
-
-
-img {
-	.img-responsive();
-	filter: gray;
-  filter: grayscale(1);
-  -webkit-filter: grayscale(1);
 }
 
 
