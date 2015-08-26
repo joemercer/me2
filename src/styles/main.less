@@ -348,6 +348,7 @@ a.colorful {
 }
 
 // !!! this no longer changes color
+// move this?
 b {
 	.transition(color 2s ease-in-out);
 	color: @white;
@@ -359,6 +360,21 @@ b {
     }
     .-((@i - 1));
   } .-;
+}
+
+.mobile {
+	b {
+		.transition(color .2s cubic-bezier(0.165,0.630,0.140,0.820));
+		color: @darkgrey;
+
+		.-(@i: length(@colors)) when (@i > 0) {
+	    @name: extract(@colors, @i);
+	    &.@{name} {
+	    	color: @@name;
+	    }
+	    .-((@i - 1));
+	  } .-;
+	}
 }
 
 .icon g {

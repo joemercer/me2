@@ -52,8 +52,10 @@ $(function(){
 	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
 		$('body').addClass('mobile');
 
+		// !!! better selector names
+
 		$window.on('touchstart', function(e){
-			$colorful.each(function(index, el){
+			$('p b, ul a.colorful, .dot.colorful').each(function(index, el){
 				var $target = $(el);
 				var newColor = colors[Math.floor(Math.random()*colors.length)];
 				$target.addClass(newColor);
@@ -61,9 +63,8 @@ $(function(){
 		});
 
 		$window.on('touchend', function(e){
-			$colorful.each(function(index, el){
+			$('p b, ul a.colorful, .dot.colorful').each(function(index, el){
 				var $target = $(el);
-				var newColor = colors[Math.floor(Math.random()*colors.length)];
 				$target.removeClass(sColors);
 			});
 			$icon.attr('class', colors[prevI]);
