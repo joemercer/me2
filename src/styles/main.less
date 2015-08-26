@@ -131,18 +131,33 @@ article {
 
 	-webkit-font-smoothing: antialiased;
 
-	h1 {
+	h1, h2 {
 		font-family: 'Ubuntu','Open Sans','Helvetica',sans-serif;
 	  font-weight: 800;
-	  font-size: 28px;
 	  line-height: 1.5;
 
 	  color: @darkgrey;
+	}
+
+	h1 {
+	  font-size: 28px;
 
 	  margin-top: @margin;
 		margin-bottom: @margin;
 		padding-left: @padding;
 		padding-right: @padding;
+	}
+
+	h2 {
+	  font-size: 20px;
+
+	  text-align: center;
+	}
+
+	h1, h2 {
+		a {
+			border: none;
+		}
 	}
 
 	p {
@@ -157,10 +172,6 @@ article {
 		margin-bottom: @margin;
 		padding-left: @padding;
 		padding-right: @padding;
-	}
-
-	h1 a {
-		border: none;
 	}
 
 	a {
@@ -294,18 +305,20 @@ img {
 	backface-visibility: hidden;
 }
 
-h1 a.colorful {
-	.transition(color 2s ease-in-out);
+h1, h2 { 
+	a.colorful {
+		.transition(color 2s ease-in-out);
 
-  .-(@i: length(@colors)) when (@i > 0) {
-    @name: extract(@colors, @i);
-    &.@{name} {
-    	&:hover {
-    		color: @@name;
-    	}
-    }
-    .-((@i - 1));
-  } .-;
+	  .-(@i: length(@colors)) when (@i > 0) {
+	    @name: extract(@colors, @i);
+	    &.@{name} {
+	    	&:hover {
+	    		color: @@name;
+	    	}
+	    }
+	    .-((@i - 1));
+	  } .-;
+	}
 }
 
 a.colorful {
