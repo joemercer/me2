@@ -210,25 +210,20 @@ article {
 	}
 	.underline {
 		overflow: hidden;
-		border-bottom: 2px solid @lightgrey;
+		border-bottom: 2px solid @black;
+		opacity: .4;
 		padding-top: 10px;
     margin-right: 30px;
 
-    .transition(border-color .5s cubic-bezier(0.165,0.630,0.140,0.820));
+    .transition(opacity .5s cubic-bezier(0.165,0.630,0.140,0.820));
 	}
 
 	&:hover {
 		.date {
 			opacity: 1;
 		}
-		.underline.colorful {
-		  .-(@i: length(@colors)) when (@i > 0) {
-		    @name: extract(@colors, @i);
-		    &.@{name} {
-		    	border-color: @@name;
-		    }
-		    .-((@i - 1));
-		  } .-;
+		.underline {
+		  opacity: .9;
 		}
 		img {
 			filter: none;
