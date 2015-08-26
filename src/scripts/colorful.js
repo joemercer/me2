@@ -72,17 +72,22 @@ $(function(){
 	}
 	else {
 		// seed each element with a starting color
-		$colorful.each(function(i,target){
+		// $colorful.each(function(i,target){
+		// 	var newColor = colors[Math.floor(Math.random()*colors.length)];
+		// 	$(target).addClass(newColor);
+		// });
+
+		// change the color when the mouse enters the element
+		$colorful.mouseenter(function(e){
+			var $target = $(e.target).closest('.colorful');
 			var newColor = colors[Math.floor(Math.random()*colors.length)];
-			$(target).addClass(newColor);
+			$target.addClass(newColor);
 		});
 
 		// change the color when the mouse leaves the element
 		$colorful.mouseleave(function(e){
 			var $target = $(e.target).closest('.colorful');
-			var newColor = colors[Math.floor(Math.random()*colors.length)];
 			$target.removeClass(sColors);
-			$target.addClass(newColor);
 		});
 	}
 
