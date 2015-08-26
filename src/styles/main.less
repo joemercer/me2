@@ -158,8 +158,6 @@ article {
 		a {
 			border: none;
 
-			// !!! what effects happen where?
-
 			.transition(color 2s ease-in-out);
 
 		  .-(@i: length(@colors)) when (@i > 0) {
@@ -173,7 +171,6 @@ article {
 		  } .-;
 		}
 	}
-}
 
 	p {
 		font-family: 'Open Sans','Helvetica',sans-serif;
@@ -350,8 +347,10 @@ a.colorful {
 	}
 }
 
-b.colorful {
-	.transition(color .2s cubic-bezier(0.165,0.630,0.140,0.820));
+// !!! this no longer changes color
+b {
+	.transition(color 2s ease-in-out);
+	color: @white;
 
   .-(@i: length(@colors)) when (@i > 0) {
     @name: extract(@colors, @i);

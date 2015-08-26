@@ -71,20 +71,21 @@ $(function(){
 		});
 	}
 	else {
-		// seed each element with a starting color
-		// $colorful.each(function(i,target){
-		// 	var newColor = colors[Math.floor(Math.random()*colors.length)];
-		// 	$(target).addClass(newColor);
-		// });
+		// seed bold elements with a starting color
+		// !!! this should be better specified, perhaps as part of article?
+		$('p b').each(function(i,target){
+			var newColor = colors[Math.floor(Math.random()*colors.length)];
+			$(target).addClass(newColor);
+		});
 
-		// change the color when the mouse enters the element
+		// change colorful element's color
 		$colorful.mouseenter(function(e){
 			var $target = $(e.target).closest('.colorful');
 			var newColor = colors[Math.floor(Math.random()*colors.length)];
 			$target.addClass(newColor);
 		});
 
-		// change the color when the mouse leaves the element
+		// back to grey when mouse leaves colorful element
 		$colorful.mouseleave(function(e){
 			var $target = $(e.target).closest('.colorful');
 			$target.removeClass(sColors);
