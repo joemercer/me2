@@ -3,6 +3,8 @@
 var example = require("./example");
 example.welcome();
 
+require("./lazy");
+
 require("./colorful");
 require("./scrollTo");
 
