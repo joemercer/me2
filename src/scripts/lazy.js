@@ -4,8 +4,8 @@
 // __________________
 
 var $ = require('jquery');
-var jQuery = $;
-require('jquery-lazy');
+window.jQuery = $;
+require('jquery-lazy/jquery.lazy');
 
 $(function(){
 
