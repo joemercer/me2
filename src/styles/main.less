@@ -9,9 +9,6 @@
 // Normalize
 @import "@{bootstrap}/normalize.less";
 
-// core styles
-@import "./core.less";
-
 
 
 @black: #000;
@@ -21,103 +18,24 @@
 
 @width: 600px;
 @padding: 10px + @border-width;
-@margin: 20px;
 
 
+// Core styles
 
-@import "./icon.less";
-
+@import "./core.less";
 @import "./article.less";
 
+// Modules
 
-
-
-
-.container {
-	max-width: @width;
-	margin: 0 auto;
-}
-
-.post {
-	h2 {
-	  text-align: center;
-	}
-}
-
-
-
-footer {
-	position: relative;
-	bottom: 0px;
-	z-index: 50;
-
-	background-color: #212121;
-
-	padding-top: 50px;
-	padding-bottom: @margin;
-
-	hr {
-		margin-top: 50px;
-		margin-bottom: 50px;
-	}
-
-	p, ul {
-		color: @lightgrey;
-		a {
-			border-color: @darkgrey;
-		}
-
-		li {
-			display: inline-block;
-			min-width: 50%;
-			float: left;
-		}
-	}
-
-	.copyright {
-		font-weight: 400;
-		font-size: 14px;
-		text-align: center;
-
-		color: @lightgrey;
-
-		margin-top: 150px;
-	}
-}
-
-@media (max-width: 350px) {
-
-	article .post-title {
-		font-size: 24px;
-	}
-
-  footer .copyright {
-  	margin-top: 175px;
-		font-size: 12px;
-	}
-
-}
-
-@media (max-width: 300px) {
-
-	article .post-title {
-		font-size: 20px;
-	}
-
-  footer .copyright {
-  	margin-top: 175px;
-		font-size: 10px;
-	}
-
-}
-
-
+@import "./icon.less";
+@import "./map.less";
 @import "./date-img.less";
 
+// Style overrides
+
+@import "./styles.less";
+
+// Effects
+
 @import "./colorful.less";
-
-@import "./map.less";
-
 @import "./fade.less";
-
-
