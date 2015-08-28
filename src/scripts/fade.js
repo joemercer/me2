@@ -8,6 +8,6 @@ var $ = require('jquery');
 $(function(){
 
 	// fade on load
-	$('.blank').removeClass('blank');
+	$('.post.blank').removeClass('blank');
 
 });
