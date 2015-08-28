@@ -112,12 +112,15 @@ header {
 article, header, footer {
 	-webkit-font-smoothing: antialiased;
 
-	h1, h2 {
+	h1, h2, h4 {
 		font-family: 'Ubuntu','Open Sans','Helvetica',sans-serif;
 	  font-weight: 800;
 	  line-height: 1.5;
 
 	  color: @darkgrey;
+
+	  padding-left: @padding;
+		padding-right: @padding;
 	}
 
 	h1 {
@@ -125,8 +128,6 @@ article, header, footer {
 
 	  margin-top: @margin;
 		margin-bottom: @margin;
-		padding-left: @padding;
-		padding-right: @padding;
 	}
 
 	h2 {
@@ -214,19 +215,43 @@ footer {
 	}
 
 	h4 {
-		font-family: 'Ubuntu','Open Sans','Helvetica',sans-serif;
-		font-weight: 400;
-		font-size: 14px;
-	  line-height: 1.5;
+		color: @lightgrey;
 
 	  text-align: center;
-
-		color: @lightgrey;
 	}
 
 	.copyright {
+		font-weight: 400;
+		font-size: 14px;
+
 		margin-top: 150px;
 	}
+}
+
+@media (max-width: 350px) {
+
+	article h1 {
+		font-size: 24px;
+	}
+
+  footer .copyright {
+  	margin-top: 175px;
+		font-size: 12px;
+	}
+
+}
+
+@media (max-width: 300px) {
+
+	article h1 {
+		font-size: 20px;
+	}
+
+  footer .copyright {
+  	margin-top: 175px;
+		font-size: 10px;
+	}
+
 }
 
 
