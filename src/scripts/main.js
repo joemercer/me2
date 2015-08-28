@@ -4,6 +4,7 @@ var example = require("./example");
 example.welcome();
 
 require("./lazy");
+require("./fade");
 
 require("./colorful");
 require("./scrollTo");

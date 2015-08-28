@@ -9,6 +9,6 @@ require('jquery-lazy/jquery.lazy');
 
 $(function(){
 
-	$("img.lazy").Lazy();
+	$('img.lazy').Lazy();
 
 });
