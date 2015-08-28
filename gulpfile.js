@@ -21,10 +21,10 @@ gulp.task('browser-sync', function() {
 });
 
 gulp.task('css', function() {
-  return gulp.src('./src/styles/**/*.{css,less}')
+  return gulp.src('./src/styles/main.less')
     .pipe($.plumber())
     .pipe($.less({
-      paths: ['src/styles','semantic/dist/*/**.css']
+      paths: ['src/styles']
     }))
     .pipe(gulp.dest('dist/styles'));
 });

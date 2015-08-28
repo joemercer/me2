@@ -1,4 +1,4 @@
-// @import "semantic.css";
+// main css file pulls in the other modules
 
 // Bootstrap path
 @bootstrap: "./../../node_modules/bootstrap/less/";
@@ -9,89 +9,8 @@
 // Normalize
 @import "@{bootstrap}/normalize.less";
 
-html {
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-*,
-*::before,
-*::after {
-  -webkit-box-sizing: inherit;
-     -moz-box-sizing: inherit;
-          box-sizing: inherit;
-}
-
-html {
-	height: 100%;
-}
-
-body {
-	height: 100%;
-}
-
-@border-width: 5px;
-
-.border {
-	background: transparent;
-	position: fixed;
-	z-index: 99;
-}
-.border.left, .border.right {
-	top: 0; bottom: 0;
-	width: @border-width;
-}
-.border.left {
-	left: 0;
-}
-.border.right {
-	right: 0;
-}
-.border.top, .border.bottom {
-	left: 0; right: 0;
-	height: @border-width;
-}
-.border.top {
-	top: 0;
-}
-.border.bottom {
-	bottom: 0;
-}
-
-
-
-header {
-	height: 250px;
-	width: 100%;
-	margin-top: 100px;
-	margin-bottom: 20px;
-
-	// position: fixed;
-	// top: 0px;
-	// z-index: 50;
-
-	background: rgba(255,255,255,0.9);
-}
-
-.mobile {
-	header {
-		height: 50%;
-		width: 100%;
-		margin-top: 100px;
-		margin-bottom: 100px;
-	}
-}
-
-.icon {
-	height: 100%;
-	width: 100%;
-	z-index: 51;
-
-	g {
-		fill: @white;
-	}
-}
+// core styles
+@import "./core.less";
 
 
 
@@ -104,89 +23,30 @@ header {
 @padding: 10px + @border-width;
 @margin: 20px;
 
+
+
+@import "./icon.less";
+
+@import "./article.less";
+
+
+
+
+
 .container {
 	max-width: @width;
 	margin: 0 auto;
 }
 
-article, header, footer {
-	-webkit-font-smoothing: antialiased;
-
-	h1, h2, h4 {
-		font-family: 'Ubuntu','Open Sans','Helvetica',sans-serif;
-	  font-weight: 800;
-	  line-height: 1.5;
-
-	  color: @darkgrey;
-
-	  padding-left: @padding;
-		padding-right: @padding;
-	}
-
-	h1 {
-	  font-size: 28px;
-
-	  margin-top: @margin;
-		margin-bottom: @margin;
-	}
-
+.post {
 	h2 {
-	  font-size: 20px;
-
 	  text-align: center;
-	}
-
-	p {
-		font-family: 'Open Sans','Helvetica',sans-serif;
-		font-weight: 400;
-		font-size: 18px;
-	  line-height: 1.5;
-
-	  a {
-	  	font-size: 20px;
-	  }
-
-	  color: @darkgrey;
-
-	  margin-top: @margin;
-		margin-bottom: @margin;
-		padding-left: @padding;
-		padding-right: @padding;
-	}
-
-	a {
-		font-family: 'Ubuntu','Open Sans','Helvetica',sans-serif;
-
-		color: inherit;
-		text-decoration: none;
-  	border-bottom: 2px solid @lightgrey;
-	}
-
-	ul {
-	  list-style-type: disc;
-
-		font-weight: 400;
-		font-size: 17px;
-	  line-height: 1.5;
-
-	  a {
-	  	font-size: 18px;
-	  }
-
-	  color: @darkgrey;
-
-	  margin-top: @margin;
-		margin-bottom: @margin;
-		padding-left: @padding + 20px;
-	  padding-right: 0px;
-
 	}
 }
 
 
+
 footer {
-	// height: 200px;
-	// width: 100%;
 	position: relative;
 	bottom: 0px;
 	z-index: 50;
@@ -214,15 +74,12 @@ footer {
 		}
 	}
 
-	h4 {
-		color: @lightgrey;
-
-	  text-align: center;
-	}
-
 	.copyright {
 		font-weight: 400;
 		font-size: 14px;
+		text-align: center;
+
+		color: @lightgrey;
 
 		margin-top: 150px;
 	}
@@ -230,7 +87,7 @@ footer {
 
 @media (max-width: 350px) {
 
-	article h1 {
+	article .post-title {
 		font-size: 24px;
 	}
 
@@ -243,7 +100,7 @@ footer {
 
 @media (max-width: 300px) {
 
-	article h1 {
+	article .post-title {
 		font-size: 20px;
 	}
 
@@ -255,293 +112,12 @@ footer {
 }
 
 
+@import "./date-img.less";
 
-.post {
-	.post-title {
-	}
+@import "./colorful.less";
 
-	b {
-		font-family: 'Ubuntu','Open Sans','Helvetica',sans-serif;
-		font-size: 20px;
-	}
-}
+@import "./map.less";
 
-
-
-.date-img {
-	margin-top: 50px;
-
-	.date {
-    display: inline-block;
-    float: left;
-	}
-	.underline {
-		overflow: hidden;
-		border-bottom: 2px solid @black;
-		opacity: .4;
-		padding-top: 10px;
-    margin-right: 30px;
-
-    .transition(opacity .5s cubic-bezier(0.165,0.630,0.140,0.820));
-	}
-
-	&:hover {
-		.date {
-			opacity: 1;
-		}
-		.underline {
-		  opacity: .9;
-		}
-		img {
-			filter: none;
-  		filter: none;
-  	  -webkit-filter: none;
-		}
-  }
-}
-
-.date {
-	font-family: 'Ubuntu','Open Sans','Helvetica',sans-serif;
-  font-weight: 800;
-  font-size: 14px;
-  line-height: 1.5;
-
-	color: @black;
-	opacity: .5;
-
-	.transition(opacity .5s cubic-bezier(0.165,0.630,0.140,0.820));
-
-	padding-left: @padding + 5px;
-  padding-right: @padding + 5px;
-  margin-top: 0px;
-  margin-bottom: 5px;
-}
-
-img {
-	.img-responsive();
-
-	margin-top: 0px;
-	margin-bottom: 0px;
-	padding-left: @padding;
-	padding-right: @padding;
-
-	.transition(filter 5s cubic-bezier(0.165,0.630,0.140,0.820), -webkit-filter 5s cubic-bezier(0.165,0.630,0.140,0.820););
-
-	filter: gray;
-  filter: grayscale(1);
-  -webkit-filter: grayscale(1);
-}
-
-@media (max-width: @width) {
-  img {
-    padding-left: 0px;
-		padding-right: 0px;
-  }
-}
-
-
-
-@yellow: #f2ea00;
-@amber: #ebce13;
-@orange: #f0aa14;
-@sunset: #f08630;
-@red: #f07a60;
-@fuchsia: #ee78f0;
-@purple: #bd90f0;
-@indigo: #9092f0;
-@blue: #7fbadc;
-@aqua: #90f0e3;
-@green: #91d271;
-@lime: #c5f060;
-
-@colors: yellow, amber, orange, sunset, red, fuchsia, purple, indigo, blue, aqua, green, lime;
-
-.colorful, .rainbow {
-	-webkit-backface-visibility: hidden;
-	backface-visibility: hidden;
-}
-
-a.rainbow {
-	.transition(color .2s cubic-bezier(0.165,0.630,0.140,0.820), border-color .2s cubic-bezier(0.165,0.630,0.140,0.820););
-
-  .-(@i: length(@colors)) when (@i > 0) {
-    @name: extract(@colors, @i);
-    &.@{name} {
-    	border-color: @@name;
-    	&:hover {
-    		color: @@name;
-    	}
-    }
-    .-((@i - 1));
-  } .-;
-}
-
-.mobile {
-	a.rainbow {
-		.transition(color .2s cubic-bezier(0.165,0.630,0.140,0.820), border-color .2s cubic-bezier(0.165,0.630,0.140,0.820););
-
-	  .-(@i: length(@colors)) when (@i > 0) {
-	    @name: extract(@colors, @i);
-	    &.@{name} {
-    		color: @@name;
-    		border-color: @@name;
-	    }
-	    .-((@i - 1));
-	  } .-;
-	}
-}
-
-h1, h2, h3 {
-	a.rainbow {
-		border: none;
-
-		.transition(color 2s ease-in-out);
-
-	  .-(@i: length(@colors)) when (@i > 0) {
-	    @name: extract(@colors, @i);
-	    &.@{name} {
-	    	&:hover {
-	    		color: @@name;
-	    	}
-	    }
-	    .-((@i - 1));
-	  } .-;
-	}
-}
-
-b.colorful {
-	.transition(color 2s ease-in-out);
-	color: @white;
-
-  .-(@i: length(@colors)) when (@i > 0) {
-    @name: extract(@colors, @i);
-    &.@{name} {
-    	color: @@name;
-    }
-    .-((@i - 1));
-  } .-;
-}
-
-.mobile {
-	b.colorful {
-		.transition(color .2s cubic-bezier(0.165,0.630,0.140,0.820));
-		color: @darkgrey;
-
-		.-(@i: length(@colors)) when (@i > 0) {
-	    @name: extract(@colors, @i);
-	    &.@{name} {
-	    	color: @@name;
-	    }
-	    .-((@i - 1));
-	  } .-;
-	}
-}
-
-.icon g {
-	//.transition(fill .2s cubic-bezier(0.165,0.630,0.140,0.820));
-	.transition(fill 2s ease-in-out);
-
-	.-(@i: length(@colors)) when (@i > 0) {
-    @name: extract(@colors, @i);
-    &.@{name} {
-    	fill: @@name;
-    }
-    .-((@i - 1));
-  } .-;
-}
-
-.border {
-	//.transition(fill .2s cubic-bezier(0.165,0.630,0.140,0.820));
-	.transition(background-color 2s ease-in-out);
-
-	.-(@i: length(@colors)) when (@i > 0) {
-    @name: extract(@colors, @i);
-    &.@{name} {
-    	background-color: @@name;
-    }
-    .-((@i - 1));
-  } .-;
-}
-
-
-// # Fade Effect
-.fade {
-	.transition(opacity 2s ease-in-out);
-}
-.blank {
-	opacity: 0;
-}
-
-
-.map-container {
-	position: relative;
-	z-index: 50;
-}
-
-.map g {
-	fill: @lightgrey;
-	z-index: 51;
-}
-
-.dot {
-  position: absolute;
-  height: 30px;
-  width: 30px;
-  border-radius: 17px;
-  z-index: 52;
-
-  border: 2px solid @darkgrey;
-  background-color: transparent;
-
-  cursor: pointer;
-}
-
-.dot.rainbow {
-	.transition(border-color .2s cubic-bezier(0.165,0.630,0.140,0.820), background-color .2s cubic-bezier(0.165,0.630,0.140,0.820););
-
-  .-(@i: length(@colors)) when (@i > 0) {
-    @name: extract(@colors, @i);
-    &.@{name} {
-    	border-color: @@name;
-    	background-color: @@name;
-    }
-    .-((@i - 1));
-  } .-;
-}
-
-.seattle {
-	top: 40.9%;
-  left: 23.5%;
-}
-
-.waterloo {
-	top: 42.9%;
-  left: 67.1%;
-}
-
-.austin {
-	top: 65.8%;
-  left: 50.7%;
-}
-
-.sf {
-	top: 53.5%;
-  left: 20.3%;
-}
-
-.nyc {
-	top: 48.5%;
-  left: 78.6%;
-}
-
-.hk {
-	top: 80.5%;
-  left: 5.0%;
-}
-
-
-
-
-
+@import "./fade.less";
 
 

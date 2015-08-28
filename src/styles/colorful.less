@@ -1,0 +1,140 @@
+// colorful effect
+
+@yellow: #f2ea00;
+@amber: #ebce13;
+@orange: #f0aa14;
+@sunset: #f08630;
+@red: #f07a60;
+@fuchsia: #ee78f0;
+@purple: #bd90f0;
+@indigo: #9092f0;
+@blue: #7fbadc;
+@aqua: #90f0e3;
+@green: #91d271;
+@lime: #c5f060;
+
+@colors: yellow, amber, orange, sunset, red, fuchsia, purple, indigo, blue, aqua, green, lime;
+
+.colorful, .rainbow {
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
+// fixed (random) colors on bold elements
+
+b.colorful {
+	.transition(color 2s ease-in-out);
+	color: @white;
+
+  .-(@i: length(@colors)) when (@i > 0) {
+    @name: extract(@colors, @i);
+    &.@{name} {
+    	color: @@name;
+    }
+    .-((@i - 1));
+  } .-;
+}
+
+.mobile {
+	b.colorful {
+		.transition(color .2s cubic-bezier(0.165,0.630,0.140,0.820));
+		color: @darkgrey;
+
+		.-(@i: length(@colors)) when (@i > 0) {
+	    @name: extract(@colors, @i);
+	    &.@{name} {
+	    	color: @@name;
+	    }
+	    .-((@i - 1));
+	  } .-;
+	}
+}
+
+// rainbow elements change color on hover
+
+a.rainbow {
+	.transition(color .2s cubic-bezier(0.165,0.630,0.140,0.820), border-color .2s cubic-bezier(0.165,0.630,0.140,0.820););
+
+  .-(@i: length(@colors)) when (@i > 0) {
+    @name: extract(@colors, @i);
+    &.@{name} {
+    	border-color: @@name;
+    	&:hover {
+    		color: @@name;
+    	}
+    }
+    .-((@i - 1));
+  } .-;
+}
+
+.mobile {
+	a.rainbow {
+		.transition(color .2s cubic-bezier(0.165,0.630,0.140,0.820), border-color .2s cubic-bezier(0.165,0.630,0.140,0.820););
+
+	  .-(@i: length(@colors)) when (@i > 0) {
+	    @name: extract(@colors, @i);
+	    &.@{name} {
+    		color: @@name;
+    		border-color: @@name;
+	    }
+	    .-((@i - 1));
+	  } .-;
+	}
+}
+
+h1, h2, h3 {
+	a.rainbow {
+		border: none;
+
+		.transition(color 2s ease-in-out);
+
+	  .-(@i: length(@colors)) when (@i > 0) {
+	    @name: extract(@colors, @i);
+	    &.@{name} {
+	    	&:hover {
+	    		color: @@name;
+	    	}
+	    }
+	    .-((@i - 1));
+	  } .-;
+	}
+}
+
+.dot.rainbow {
+	.transition(border-color .2s cubic-bezier(0.165,0.630,0.140,0.820), background-color .2s cubic-bezier(0.165,0.630,0.140,0.820););
+
+  .-(@i: length(@colors)) when (@i > 0) {
+    @name: extract(@colors, @i);
+    &.@{name} {
+    	border-color: @@name;
+    	background-color: @@name;
+    }
+    .-((@i - 1));
+  } .-;
+}
+
+// icon and border kaliedascope
+
+.icon g {
+	.transition(fill 2s ease-in-out);
+
+	.-(@i: length(@colors)) when (@i > 0) {
+    @name: extract(@colors, @i);
+    &.@{name} {
+    	fill: @@name;
+    }
+    .-((@i - 1));
+  } .-;
+}
+
+.border {
+	.transition(background-color 2s ease-in-out);
+
+	.-(@i: length(@colors)) when (@i > 0) {
+    @name: extract(@colors, @i);
+    &.@{name} {
+    	background-color: @@name;
+    }
+    .-((@i - 1));
+  } .-;
+}
