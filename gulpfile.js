@@ -91,8 +91,8 @@ gulp.task('copy', function() {
 gulp.task('ghPages', function() {
   return gulp.src('./dist/**/*')
     .pipe($.ghPages({
-      // remoteUrl: 'https://github.com/joemercer/joemercer.github.io.git',
-      // branch: 'master'
+      remoteUrl: 'https://github.com/joemercer/joemercer.github.io.git',
+      branch: 'master'
     }));
 });
 
