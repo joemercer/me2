@@ -11,6 +11,9 @@ var gulp        = require('gulp'),
 $.handlebars = require('gulp-compile-handlebars');
 $.ghPages = require('gulp-gh-pages');
 
+// !!! run-sequence will be deprecated in gulp v4
+$.runSequence = require('run-sequence');
+
 gulp.task('browser-sync', function() {
   browserSync({
     open: !!argv.open,
@@ -22,11 +25,12 @@ gulp.task('browser-sync', function() {
 });
 
 var data = {
-  firstName: 'Kaanon' // !!!
+  twitter: 'https://twitter.com/jomrcr',
+  email: 'jomrcr@gmail.com'
 };
 var options = {
   batch: ['./src/partials'],
-  helpers : { // !!!
+  helpers : {
     capitals : function(str){
       return str.toUpperCase();
     }
@@ -108,7 +112,7 @@ gulp.task('serve', ['build', 'browser-sync'], function () {
 gulp.task('build', ['templates', 'css', 'js', 'images']);
 
 gulp.task('deploy', function() {
-  runSequence('build', 'copy', 'ghPages');
+  $.runSequence('build', 'copy', 'ghPages');
 });
 
 gulp.task('default', ['serve']);
