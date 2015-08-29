@@ -9,6 +9,7 @@ var gulp        = require('gulp'),
     argv        = require('yargs').argv;
 
 $.handlebars = require('gulp-compile-handlebars');
+$.ghPages = require('gulp-gh-pages');
 
 gulp.task('browser-sync', function() {
   browserSync({
@@ -83,9 +84,16 @@ gulp.task('templates', function() {
     .pipe(gulp.dest('dist/') )
 });
 
+gulp.task('ghPages', function() {
+  return gulp.src('./dist/**/*')
+    .pipe($.ghPages({
+      remoteUrl: 'https://github.com/joemercer/joemercer.github.io.git',
+      branch: 'master'
+    }));
+});
 
 
-gulp.task('build', ['css', 'js', 'templates', 'images']);
+
 
 gulp.task('serve', ['build', 'browser-sync'], function () {
   gulp.watch('src/styles/**/*.{css,less}',['css', reload]);
@@ -93,5 +101,9 @@ gulp.task('serve', ['build', 'browser-sync'], function () {
   gulp.watch('src/images/**/*',['images', reload]);
   gulp.watch(['src/*.hbs','src/partials/**/*.hbs'],['templates', reload]);
 });
+
+gulp.task('build', ['css', 'js', 'templates', 'images']);
+
+gulp.task('deploy', ['build', 'ghPages']);
 
 gulp.task('default', ['serve']);

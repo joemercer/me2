@@ -1,11 +1,12 @@
 {
-  "name": "me",
+  "name": "me2",
   "description": "Personal website for Joe Mercer",
   "version": "0.3.0",
   "author": "Joe Mercer",
   "repository": {
     "type": "git",
-    "url": "https://github.com/joemercer/me.git",
+    "url": "https://github.com/joemercer/me2.git"
+  },
   "devDependencies": {
     "babelify": "^6.1.3",
     "better-console": "^0.2.4",
@@ -24,6 +25,7 @@
     "gulp-concat-css": "^2.2.0",
     "gulp-copy": "0.0.2",
     "gulp-flatten": "^0.1.0",
+    "gulp-gh-pages": "^0.5.2",
     "gulp-header": "^1.2.2",
     "gulp-help": "^1.6.0",
     "gulp-if": "^1.2.5",
