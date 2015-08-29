@@ -21,6 +21,25 @@ gulp.task('browser-sync', function() {
   });
 });
 
+var data = {
+  firstName: 'Kaanon' // !!!
+};
+var options = {
+  batch: ['./src/partials'],
+  helpers : { // !!!
+    capitals : function(str){
+      return str.toUpperCase();
+    }
+  }
+};
+gulp.task('templates', function() {
+  return gulp.src('src/*.hbs')
+    .pipe($.plumber())
+    .pipe($.handlebars(data, options))
+    .pipe($.rename('index.html'))
+    .pipe(gulp.dest('dist/') )
+});
+
 gulp.task('css', function() {
   return gulp.src('./src/styles/main.less')
     .pipe($.plumber())
@@ -52,11 +71,6 @@ gulp.task('js', function() {
   .pipe(gulp.dest('dist/scripts/'));
 });
 
-
-gulp.task('clean', function(cb) {
-  del('./dist', cb);
-});
-
 gulp.task('images', function() {
   return gulp.src('./src/images/**/*')
     .pipe($.imagemin({
@@ -65,23 +79,9 @@ gulp.task('images', function() {
     .pipe(gulp.dest('./dist/images'))
 });
 
-var data = {
-  firstName: 'Kaanon' // !!!
-};
-var options = {
-  batch: ['./src/partials'],
-  helpers : { // !!!
-    capitals : function(str){
-      return str.toUpperCase();
-    }
-  }
-};
-gulp.task('templates', function() {
-  return gulp.src('src/*.hbs')
-    .pipe($.plumber())
-    .pipe($.handlebars(data, options))
-    .pipe($.rename('index.html'))
-    .pipe(gulp.dest('dist/') )
+gulp.task('copy', function() {
+  return gulp.src(['./src/CNAME', './src/favicon.ico'])
+    .pipe(gulp.dest('./dist'))
 });
 
 gulp.task('ghPages', function() {
@@ -92,6 +92,9 @@ gulp.task('ghPages', function() {
     }));
 });
 
+gulp.task('clean', function(cb) {
+  del('./dist', cb);
+});
 
 
 
@@ -102,8 +105,10 @@ gulp.task('serve', ['build', 'browser-sync'], function () {
   gulp.watch(['src/*.hbs','src/partials/**/*.hbs'],['templates', reload]);
 });
 
-gulp.task('build', ['css', 'js', 'templates', 'images']);
+gulp.task('build', ['templates', 'css', 'js', 'images']);
 
-gulp.task('deploy', ['build', 'ghPages']);
+gulp.task('deploy', function() {
+  runSequence('build', 'copy', 'ghPages');
+});
 
 gulp.task('default', ['serve']);
