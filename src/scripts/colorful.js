@@ -31,29 +31,15 @@ $(function(){
 	prevI = (prevI + 1) % colors.length;
 
 
-	// kaleidoscope when mouse enters icon
-	$icon.mouseenter(function(){
-		$icon.attr('class', colors[prevI]);
-		$borders.removeClass(sColors);
-		$borders.addClass(colors[prevI]);
-		var intervalId = window.setInterval(function(){
-			var i = (prevI + 1) % colors.length;
-			$icon.attr('class', colors[i]);
-			$borders.removeClass(sColors);
-			$borders.addClass(colors[i]);
-			prevI = i;
-		}, 2000);
-
-		$icon.mouseleave(function(){
-			window.clearInterval(intervalId);
-			$borders.removeClass(sColors);
-		});
-	});
-
-
 	// if is mobile
-	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+	if( /Android|webOS/i.test(navigator.userAgent) ) {
 		$('body').addClass('mobile');
+
+		// tap icon to change color
+		$window.on('touchstart', function(e){
+			$icon.attr('class', colors[prevI]);
+			prevI = (prevI + 1) % colors.length;
+		});
 
 		$window.on('touchstart', function(e){
 			$('b.colorful, p a.rainbow, ul a.rainbow, .dot.rainbow').each(function(index, el){
@@ -72,7 +58,45 @@ $(function(){
 			prevI = (prevI + 1) % colors.length;
 		});
 	}
+	else if( /iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+		$('body').addClass('mobile ios');
+
+		// tap icon to change color
+		$window.on('touchstart', function(e){
+			$icon.attr('class', colors[prevI]);
+			prevI = (prevI + 1) % colors.length;
+		});
+
+		// seed colorful elements with a starting color
+		$colorful.each(function(i,target){
+			var newColor = colors[Math.floor(Math.random()*colors.length)];
+			$(target).addClass(newColor);
+		});
+		$('b.colorful, .dot.rainbow').each(function(i, target){
+			var newColor = colors[Math.floor(Math.random()*colors.length)];
+			$(target).addClass(newColor);
+		});
+	}
 	else {
+		// kaleidoscope when mouse enters icon
+		$icon.mouseenter(function(){
+			$icon.attr('class', colors[prevI]);
+			$borders.removeClass(sColors);
+			$borders.addClass(colors[prevI]);
+			var intervalId = window.setInterval(function(){
+				var i = (prevI + 1) % colors.length;
+				$icon.attr('class', colors[i]);
+				$borders.removeClass(sColors);
+				$borders.addClass(colors[i]);
+				prevI = i;
+			}, 2000);
+
+			$icon.mouseleave(function(){
+				window.clearInterval(intervalId);
+				$borders.removeClass(sColors);
+			});
+		});
+
 		// seed colorful elements with a starting color
 		$colorful.each(function(i,target){
 			var newColor = colors[Math.floor(Math.random()*colors.length)];
