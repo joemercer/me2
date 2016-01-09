@@ -84,7 +84,7 @@ gulp.task('images', function() {
 });
 
 gulp.task('copy', function() {
-  return gulp.src(['./src/CNAME', './src/favicon.ico'])
+  return gulp.src(['./src/CNAME', './src/favicon.ico', './src/files/*'])
     .pipe(gulp.dest('./dist'))
 });
 
