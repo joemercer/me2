@@ -9,6 +9,13 @@ $(function(){
 
 	var startY = $('.map-container').offset().top;
 
+	$('.dot.menlopark').click(function(){
+		var targetY = $('.menlopark-header').offset().top;
+		$('html, body').animate({
+      scrollTop: targetY - 50
+    }, 500*targetY/startY);
+	});
+
 	$('.dot.seattle').click(function(){
 		var targetY = $('.seattle-header').offset().top;
 		$('html, body').animate({
