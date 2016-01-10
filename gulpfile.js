@@ -25,9 +25,10 @@ gulp.task('browser-sync', function() {
 });
 
 var data = {
-  twitter: 'https://twitter.com/jomrcr',
-  email: 'jomrcr@gmail.com'
+  email: 'jomrcr@gmail.com',
+  twitter: 'https://twitter.com/jomrcr'
 };
+// !!! don't use the capitals helper - just an example
 var options = {
   batch: ['./src/partials'],
   helpers : {
